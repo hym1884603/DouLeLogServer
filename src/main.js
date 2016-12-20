@@ -3,6 +3,7 @@ import Vue from 'vue'
 import App from './App'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
+import axios from 'axios'
 import VueRouter from 'vue-router'
 import store from './vuex/store'
 import Vuex from 'vuex'
@@ -20,20 +21,14 @@ import Page4 from './components/nav2/Page4.vue'
 import Page5 from './components/nav2/Page5.vue'
 import Page6 from './components/nav3/Page6.vue'
 import echarts from './components/charts/echarts.vue'
+import locales from './language/lang.js'
 
 Vue.use(ElementUI)
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.use(vueI18n)
+Vue.prototype.$http = axios
 
-var locales = {
-    en:{
-      business:"business"
-    },
-    cn:{
-      business:"业务"
-    }
-}
 //设置全局语言
 Vue.config.lang = 'cn'
 // set locales

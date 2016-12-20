@@ -1,46 +1,52 @@
 <template>
 	<el-form ref="form" :model="form" label-width="80px" @submit.prevent="onSubmit" style="margin:20px;width:60%;min-width:600px;">
-		<el-form-item label="活动名称">
-			<el-input v-model="form.name"></el-input>
+		<el-form-item :label="$t('conversion.shot')">
+			<el-input-number v-model="form.shot" :min="0" :max="200"></el-input-number>
 		</el-form-item>
-		<el-form-item label="活动区域">
-			<el-select v-model="form.region" placeholder="请选择活动区域">
-				<el-option label="区域一" value="shanghai"></el-option>
-				<el-option label="区域二" value="beijing"></el-option>
-			</el-select>
+		<el-form-item :label="$t('conversion.fiftyCoin')">
+			<el-input-number v-model="form.fiftyCoin" :min="0" :max="200"></el-input-number>
 		</el-form-item>
-		<el-form-item label="活动时间">
-			<el-col :span="11">
-				<el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
+		<el-form-item :label="$t('conversion.hundredCoin')">
+			<el-input-number v-model="form.hundredCoin" :min="0" :max="200"></el-input-number>
+		</el-form-item>
+		<el-form-item :label="$t('conversion.dragonBall')">
+			<el-input-number v-model="form.dragonBall" :min="0" :max="200"></el-input-number>
+		</el-form-item>
+		<el-form-item :label="$t('conversion.colorfulBall')">
+			<el-input-number v-model="form.colourfulBall" :min="0" :max="200"></el-input-number>
+		</el-form-item>
+		<el-form-item :label="$t('conversion.life')">
+			<el-input-number v-model="form.life" :min="0" :max="200"></el-input-number>
+		</el-form-item>
+		<el-form-item :label="$t('conversion.transformBall')">
+			<el-input-number v-model="form.transformBall" :min="0" :max="200"></el-input-number>
+		</el-form-item>
+		<el-form-item :label="$t('conversion.activeTime')">
+			<el-col :span="8">
+				<el-date-picker
+				type="date"
+				:placeholder="$t('conversion.startTime')"
+				v-model="form.date1"
+				style="width: 100%;"
+				:picker-options="pickerOptions1">
+			</el-date-picker>
 			</el-col>
-			<el-col class="line" :span="2">-</el-col>
-			<el-col :span="11">
+			<!-- <el-col :span="11">
 				<el-time-picker type="fixed-time" placeholder="选择时间" v-model="form.date2" style="width: 100%;"></el-time-picker>
+			</el-col> -->
+			<el-col :span="8">
+				<el-date-picker
+				type="date"
+				:placeholder="$t('conversion.endTime')"
+				v-model="form.date2"
+				style="width: 100%;"
+				:picker-options="pickerOptions2">
+			</el-date-picker>
 			</el-col>
-		</el-form-item>
-		<el-form-item label="即时配送">
-			<el-switch on-text="" off-text="" v-model="form.delivery"></el-switch>
-		</el-form-item>
-		<el-form-item label="活动性质">
-			<el-checkbox-group v-model="form.type">
-				<el-checkbox label="美食/餐厅线上活动" name="type"></el-checkbox>
-				<el-checkbox label="地推活动" name="type"></el-checkbox>
-				<el-checkbox label="线下主题活动" name="type"></el-checkbox>
-				<el-checkbox label="单纯品牌曝光" name="type"></el-checkbox>
-			</el-checkbox-group>
-		</el-form-item>
-		<el-form-item label="特殊资源">
-			<el-radio-group v-model="form.resource">
-				<el-radio label="线上品牌商赞助"></el-radio>
-				<el-radio label="线下场地免费"></el-radio>
-			</el-radio-group>
-		</el-form-item>
-		<el-form-item label="活动形式">
-			<el-input type="textarea" v-model="form.desc"></el-input>
 		</el-form-item>
 		<el-form-item>
-			<el-button type="primary">立即创建</el-button>
-			<el-button @click.native.prevent>取消</el-button>
+			<el-button @click=onSubmit type="primary">{{$t("conversion.conversion")}}</el-button>
+			<el-button @click.native.prevent>{{$t("conversion.cancel")}}</el-button>
 		</el-form-item>
 	</el-form>
 </template>
@@ -49,21 +55,65 @@
   export default {
     data() {
       return {
+				pickerOptions1: {
+					shortcuts: [{
+						text: this.$t('conversion.today'),
+						onClick(picker) {
+							picker.$emit('pick', new Date());
+						}
+					}, {
+						text: this.$t('conversion.yesterday'),
+						onClick(picker) {
+							const date = new Date();
+							date.setTime(date.getTime() - 3600 * 1000 * 24);
+							picker.$emit('pick', date);
+						}
+					}, {
+						text: this.$t('conversion.beforeYesterday'),
+						onClick(picker) {
+							const date = new Date();
+							date.setTime(date.getTime() - 3600 * 1000 * 24 * 2);
+							picker.$emit('pick', date);
+						}
+					}]
+				},
+				pickerOptions2: {
+					shortcuts: [{
+						text: this.$t('conversion.tomorrow'),
+						onClick(picker) {
+							picker.$emit('pick', new Date() + 3600 * 1000 * 24);
+						}
+					},{
+						text: this.$t('conversion.affterTomorrow'),
+						onClick(picker) {
+							const date = new Date();
+							date.setTime(date.getTime() + 3600 * 1000 * 24 * 2);
+							picker.$emit('pick', date);
+						}
+					}]
+				},
         form: {
-          name: '',
-          region: '',
           date1: '',
           date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: ''
+					shot:0,
+					fiftyCoin:0,
+					hundredCoin:0,
+					dragonBall:0,
+					colorfulBall:0,
+					life:0,
+					transformBall:0,
         }
       }
     },
     methods: {
       onSubmit() {
-        console.log('submit!');
+        // this.$http.get('http://www.baidu.com',{
+				//
+				// }).then(function(response){
+				// 	console.log(response);
+				// }).catch(function(error){
+				// 	console.log(error);
+				// })
       }
     }
   }
