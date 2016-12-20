@@ -6,6 +6,7 @@ import 'element-ui/lib/theme-default/index.css'
 import VueRouter from 'vue-router'
 import store from './vuex/store'
 import Vuex from 'vuex'
+import vueI18n from 'vue-i18n' //引进全局语言
 import NProgress from 'nprogress'//页面顶部进度条
 import 'nprogress/nprogress.css'
 
@@ -23,6 +24,22 @@ import echarts from './components/charts/echarts.vue'
 Vue.use(ElementUI)
 Vue.use(VueRouter)
 Vue.use(Vuex)
+Vue.use(vueI18n)
+
+var locales = {
+    en:{
+      business:"business"
+    },
+    cn:{
+      business:"业务"
+    }
+}
+//设置全局语言
+Vue.config.lang = 'cn'
+// set locales
+Object.keys(locales).forEach(function (lang) {
+  Vue.locale(lang, locales[lang])
+})
 
 const routes = [
   {
@@ -35,7 +52,7 @@ const routes = [
     path: '/',
     component: Home,
     name: '导航一',
-    iconCls: 'el-icon-message',//图标样式class
+    iconCls: 'fa fa-wrench',//图标样式class
     children: [
       //{ path: '/main', component: Main },
       { path: '/table', component: Table, name: 'Table' },
@@ -47,7 +64,7 @@ const routes = [
     path: '/',
     component: Home,
     name: '导航二',
-    iconCls: 'fa fa-id-card-o',
+    iconCls: 'fa fa-pencil-square-o',
     children: [
       { path: '/page4', component: Page4, name: '页面4' },
       { path: '/page5', component: Page5, name: '页面5' }
@@ -97,5 +114,3 @@ new Vue({
 }).$mount('#app')
 
 router.replace('/login')
-
-
