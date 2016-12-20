@@ -1,6 +1,7 @@
 export default{
   cn:{
     conversion:{
+      title:"兑换码生成器",
       shot:"瞄准器",
       fiftyCoin:"50个金币",
       hundredCoin:"100个金币",
@@ -19,6 +20,17 @@ export default{
       beforeYesterday:"前天",
       tomorrow:"明天",
       affterTomorrow:"后天",
+      warn:"警告",
+      warnMessage:"起始时间和结束时间必须填写",
+      countMessage:"因游戏设置，兑换项目最多为2",
+      code:"兑换码",
+      success:"成功生成兑换码",
+    },
+    levelControl:{
+      title:"关卡控制",
+      targetLevel:"当前开启关卡数:",
+      modify:"修改关卡",
+      success:"关卡修改成功",
     }
   },
   en:{

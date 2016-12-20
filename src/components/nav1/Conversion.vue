@@ -48,6 +48,9 @@
 			<el-button @click=onSubmit type="primary">{{$t("conversion.conversion")}}</el-button>
 			<el-button @click.native.prevent>{{$t("conversion.cancel")}}</el-button>
 		</el-form-item>
+		<el-input :span="2" v-model="code" v-if="show">
+			<template slot="prepend">{{$t("conversion.code")}}</template>
+		</el-input>
 	</el-form>
 </template>
 
@@ -102,11 +105,31 @@
 					colorfulBall:0,
 					life:0,
 					transformBall:0,
-        }
+        },
+				code:"",
+				show:false,
       }
     },
     methods: {
       onSubmit() {
+				if(!(this.form['date1']&&this.form['date2']))
+				{
+					this.warn();
+				}
+				var count = 0;
+				for(var x in this.form)
+				{
+					if(this.form[x]>0){
+						count += 1;
+					}
+				}
+				if(count>4){
+					this.countWarn();
+				}
+				var code = "ssss";
+				this.show=true;
+				this.code = code;
+				this.successNotify(code);
         // this.$http.get('http://www.baidu.com',{
 				//
 				// }).then(function(response){
@@ -114,7 +137,28 @@
 				// }).catch(function(error){
 				// 	console.log(error);
 				// })
-      }
+      },
+			warn() {
+				this.$notify({
+					title: this.$t('conversion.warn'),
+					message: this.$t('conversion.warnMessage'),
+					type: 'warning'
+				});
+			},
+			countWarn() {
+				this.$notify({
+					title: this.$t('conversion.warn'),
+					message: this.$t('conversion.countMessage'),
+					type: 'warning'
+				});
+			},
+			successNotify(code) {
+				this.$notify({
+					title: this.$t('conversion.success'),
+					message: code,
+					type: 'success'
+				});
+			},
     }
   }
 </script>

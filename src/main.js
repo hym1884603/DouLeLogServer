@@ -15,7 +15,8 @@ import Login from './components/Login.vue'
 import Home from './components/Home.vue'
 import Main from './components/Main.vue'
 import Table from './components/nav1/Table.vue'
-import Form from './components/nav1/Form.vue'
+import Conversion from './components/nav1/Conversion.vue'
+import LevelControl from './components/nav1/LevelControl.vue'
 import Page3 from './components/nav1/Page3.vue'
 import Page4 from './components/nav2/Page4.vue'
 import Page5 from './components/nav2/Page5.vue'
@@ -31,6 +32,7 @@ Vue.prototype.$http = axios
 
 //设置全局语言
 Vue.config.lang = 'cn'
+var titelLang = locales.cn;
 // set locales
 Object.keys(locales).forEach(function (lang) {
   Vue.locale(lang, locales[lang])
@@ -49,9 +51,10 @@ const routes = [
     name: '导航一',
     iconCls: 'fa fa-wrench',//图标样式class
     children: [
-      //{ path: '/main', component: Main },
+      // { path: '/main', component: Main },
       { path: '/table', component: Table, name: 'Table' },
-      { path: '/form', component: Form, name: 'Form' },
+      { path: '/conversion', component: Conversion, name: titelLang.conversion.title },
+      { path: '/levelControl', component: LevelControl, name: titelLang.levelControl.title },
       { path: '/page3', component: Page3, name: '页面3' },
     ]
   },
@@ -108,4 +111,5 @@ new Vue({
   //render: h => h(Login)
 }).$mount('#app')
 
-router.replace('/login')
+//不要每次都进入登录页
+// router.replace('/login')
