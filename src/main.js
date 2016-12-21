@@ -14,12 +14,12 @@ import 'nprogress/nprogress.css'
 import Login from './components/Login.vue'
 import Home from './components/Home.vue'
 import Main from './components/Main.vue'
+import Total from './components/Total.vue'
 import Table from './components/nav1/Table.vue'
 import Conversion from './components/nav1/Conversion.vue'
 import LevelControl from './components/nav1/LevelControl.vue'
 import Page3 from './components/nav1/Page3.vue'
-import Page4 from './components/nav2/Page4.vue'
-import Page5 from './components/nav2/Page5.vue'
+import Tournament from './components/nav2/tournament.vue'
 import UserLevel from './components/nav2/UserLevel.vue'
 import LevelRate from './components/nav2/LevelRate.vue'
 import Page6 from './components/nav3/Page6.vue'
@@ -34,7 +34,7 @@ Vue.prototype.$http = axios
 
 //设置全局语言
 Vue.config.lang = 'cn'
-var titelLang = locales.cn;
+var titelLang = locales[Vue.config.lang];
 // set locales
 Object.keys(locales).forEach(function (lang) {
   Vue.locale(lang, locales[lang])
@@ -46,7 +46,27 @@ const routes = [
     component: Login,
     hidden: true//不显示在导航中
   },
+  {
+    path: '/',
+    component: Home,
+    name: '主页',
+    children: [
+      { path: '/home', component: Total, name:'统计'}
+    ],
+    hidden: true//不显示在导航中
+  },
   //{ path: '/main', component: Main },
+  {
+    path: '/',
+    component: Home,
+    name: '游戏',
+    iconCls: 'fa fa-gamepad',//图标样式class
+    children: [
+      // { path: '/main', component: Main },
+      { path: '/home?game=Bunspop', component: Table, name: 'Bunspop' },
+      { path: '/home?game=Monster', component: Page3, name: 'Monster' },
+    ]
+  },
   {
     path: '/',
     component: Home,
@@ -68,8 +88,7 @@ const routes = [
     children: [
       {path:'/userLevel',component: UserLevel, name: titelLang.userLevel.title},
       {path:'/levelRate',component: LevelRate, name: titelLang.levelRate.title},
-      { path: '/page4', component: Page4, name: '页面4' },
-      { path: '/page5', component: Page5, name: '页面5' }
+      {path:'/tournamentCount',component: Tournament, name: titelLang.tournament.title},
     ]
   },
   {
