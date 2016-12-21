@@ -109,10 +109,10 @@
 				}).then(() => {
 					_this.$router.replace('/login');
 				}).catch(() => {
-							
+
 				});
 
-				
+
 			}
     }
   }
@@ -123,26 +123,26 @@
 	.fade-leave-active {
 		transition: opacity .5s
 	}
-	
+
 	.fade-enter,
 	.fade-leave-active {
 		opacity: 0
 	}
-	
+
 	.panel {
 		position: absolute;
 		top: 0px;
 		bottom: 0px;
 		width: 100%;
 	}
-	
+
 	.panel-top {
 		height: 60px;
 		line-height: 60px;
 		background: #1F2D3D;
 		color: #c0ccda;
 	}
-	
+
 	.panel-center {
 		background: #324057;
 		position: absolute;
@@ -150,7 +150,7 @@
 		bottom: 0px;
 		overflow: hidden;
 	}
-	
+
 	.panel-c-c {
 		background: #f1f2f7;
 		position: absolute;
@@ -161,7 +161,7 @@
 		overflow-y: scroll;
 		padding: 20px;
 	}
-	
+
 	.logout {
 		background: url(../assets/logout_36.png);
 		background-size: contain;
@@ -169,23 +169,23 @@
 		height: 20px;
 		float: left;
 	}
-	
+
 	.logo {
 		width: 40px;
 		float: left;
 		margin: 10px 10px 10px 18px;
 	}
-	
+
 	.tip-logout {
 		float: right;
 		margin-right: 20px;
 		padding-top: 5px;
 	}
-	
+
 	.tip-logout i {
 		cursor: pointer;
 	}
-	
+
 	.admin {
 		color: #c0ccda;
 		text-align: center;

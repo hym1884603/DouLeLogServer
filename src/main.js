@@ -20,6 +20,8 @@ import LevelControl from './components/nav1/LevelControl.vue'
 import Page3 from './components/nav1/Page3.vue'
 import Page4 from './components/nav2/Page4.vue'
 import Page5 from './components/nav2/Page5.vue'
+import UserLevel from './components/nav2/UserLevel.vue'
+import LevelRate from './components/nav2/LevelRate.vue'
 import Page6 from './components/nav3/Page6.vue'
 import echarts from './components/charts/echarts.vue'
 import locales from './language/lang.js'
@@ -64,6 +66,8 @@ const routes = [
     name: '导航二',
     iconCls: 'fa fa-pencil-square-o',
     children: [
+      {path:'/userLevel',component: UserLevel, name: titelLang.userLevel.title},
+      {path:'/levelRate',component: LevelRate, name: titelLang.levelRate.title},
       { path: '/page4', component: Page4, name: '页面4' },
       { path: '/page5', component: Page5, name: '页面5' }
     ]

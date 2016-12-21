@@ -31,7 +31,23 @@ export default{
       targetLevel:"当前开启关卡数:",
       modify:"修改关卡",
       success:"关卡修改成功",
-    }
+    },
+    userLevel:{
+      title:"玩家关卡统计",
+      level:"关卡",
+      count:"人数",
+      noLogin:"天不登录人数",
+      lostPercent:"流失百分比",
+    },
+    levelRate:{
+      title:"关卡成功率",
+      level:"关卡",
+      successTimes:"成功次数",
+      failTimes:"失败次数",
+      oneStartTimes:"一星次数",
+      twoStartTimes:"两星次数",
+      threeStartTimes:"三星次数",
+    },
   },
   en:{
 
