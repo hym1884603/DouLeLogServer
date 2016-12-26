@@ -5,9 +5,8 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import axios from 'axios'
 import VueRouter from 'vue-router'
-import store from './vuex/store'
-import Vuex from 'vuex'
-import vueI18n from 'vue-i18n' //引进全局语言
+import store from './vuex'
+import locales from './language' //引进全局语言
 import NProgress from 'nprogress'//页面顶部进度条
 import 'nprogress/nprogress.css'
 
@@ -24,23 +23,19 @@ import UserLevel from './components/nav2/UserLevel.vue'
 import LevelRate from './components/nav2/LevelRate.vue'
 import Page6 from './components/nav3/Page6.vue'
 import echarts from './components/charts/echarts.vue'
-import locales from './language/lang.js'
+
 
 Vue.use(ElementUI)
 Vue.use(VueRouter)
-Vue.use(Vuex)
-Vue.use(vueI18n)
 Vue.prototype.$http = axios
 
-//设置全局语言
-Vue.config.lang = 'cn'
-var titelLang = locales[Vue.config.lang];
-// set locales
-Object.keys(locales).forEach(function (lang) {
-  Vue.locale(lang, locales[lang])
-})
+// init store data
+// store.dispatch('initGlobalConfig')
+var titelLang = locales;
 
-const routes = [
+
+
+var routes = [
   {
     path: '/login',
     component: Login,

@@ -21,11 +21,11 @@ export default {
 	.bounce-enter-active {
 		animation: bounce-in .5s;
 	}
-	
+
 	.bounce-leave-active {
 		animation: bounce-out .2s;
 	}
-	
+
 	@keyframes bounce-in {
 		0% {
 			transform: scale(0);
@@ -37,7 +37,7 @@ export default {
 			transform: scale(1);
 		}
 	}
-	
+
 	@keyframes bounce-out {
 		0% {
 			transform: scale(1);
@@ -49,7 +49,7 @@ export default {
 			transform: scale(0);
 		}
 	}
-	
+
 	body {
 		/*background-color: #324057;*/
 		margin: 0px;
@@ -61,19 +61,19 @@ export default {
 		font-weight: 400;
 		-webkit-font-smoothing: antialiased;
 	}
-	
+
 	#app {
 		position: absolute;
 		top: 0px;
 		bottom: 0px;
 		width: 100%;
 	}
-	
+
 	.el-submenu [class^=fa] {
 		vertical-align: baseline;
 		margin-right: 10px;
 	}
-	
+
 	.el-menu-item [class^=fa] {
 		vertical-align: baseline;
 		margin-right: 10px;
