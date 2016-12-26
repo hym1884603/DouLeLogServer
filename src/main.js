@@ -24,11 +24,10 @@ import LevelRate from './components/nav2/LevelRate.vue'
 import Page6 from './components/nav3/Page6.vue'
 import echarts from './components/charts/echarts.vue'
 
-
 Vue.use(ElementUI)
 Vue.use(VueRouter)
 Vue.prototype.$http = axios
-
+//目前看来切换语言的最好做法是刷新整个游戏
 // init store data
 // store.dispatch('initGlobalConfig')
 var titelLang = locales;

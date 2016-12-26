@@ -107,7 +107,7 @@ export default {
 				value: "en"
 			}, {
 				label: "中文",
-				value: "zh_CN"
+				value: "zh-CN"
 			}],
 		}
 	},

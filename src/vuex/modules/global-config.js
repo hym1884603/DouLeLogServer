@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import { read, save } from '../../storage'
+import ElementUI from 'element-ui'
 import { STORE_KEY_CONFIG_LOCALE, STORE_KEY_CONFIG_GAME } from '../../constants'
 const state = {
-  locale: 'zh_CN',
+  locale: 'zh-CN',
   game: 'Bunspop'
 }
 
@@ -19,7 +20,10 @@ const actions = {
       Vue.locale(lang, langConfig.default)
       Vue.config.lang = lang
       save(STORE_KEY_CONFIG_LOCALE, lang)
-      Vue.prototype.titelLang = langConfig.default
+    })
+    require([`element-ui/lib/locale/lang/${lang}.js`], (langConfig) => {
+      console.log(langConfig)
+      Vue.use(ElementUI, { langConfig })
     })
   },
   initGlobalConfig ({ commit, dispatch, state }) {
