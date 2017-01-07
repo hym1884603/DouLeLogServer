@@ -17,7 +17,7 @@ import Total from './components/Total.vue'
 import Table from './components/nav1/Table.vue'
 import Conversion from './components/nav1/Conversion.vue'
 import LevelControl from './components/nav1/LevelControl.vue'
-import Page3 from './components/nav1/Page3.vue'
+import GiftSale from './components/nav1/GiftSale.vue'
 import Tournament from './components/nav2/tournament.vue'
 import UserLevel from './components/nav2/UserLevel.vue'
 import LevelRate from './components/nav2/LevelRate.vue'
@@ -58,7 +58,7 @@ var routes = [
     children: [
       // { path: '/main', component: Main },
       { path: '/home?game=Bunspop', component: Table, name: 'Bunspop' },
-      { path: '/home?game=Monster', component: Page3, name: 'Monster' },
+      { path: '/home?game=Monster', component: Table, name: 'Monster' },
     ]
   },
   {
@@ -71,7 +71,7 @@ var routes = [
       { path: '/table', component: Table, name: 'Table' },
       { path: '/conversion', component: Conversion, name: titelLang.conversion.title },
       { path: '/levelControl', component: LevelControl, name: titelLang.levelControl.title },
-      { path: '/page3', component: Page3, name: '页面3' },
+      { path: '/giftSale', component: GiftSale, name: titelLang.giftSale.title },
     ]
   },
   {
