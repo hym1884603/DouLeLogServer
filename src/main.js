@@ -45,7 +45,7 @@ var routes = [
     component: Home,
     name: '主页',
     children: [
-      { path: '/home', component: Total, name:'统计'}
+      { path: '/', component: Total, name:'统计'},
     ],
     hidden: true//不显示在导航中
   },

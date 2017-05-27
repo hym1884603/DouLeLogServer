@@ -40,7 +40,7 @@
 				</el-menu>-->
 				<el-menu style="border-top: 1px solid #475669;" :default-active="active" class="el-menu-vertical-demo" @open="handleopen"
 					@close="handleclose" @select="handleselect" theme="dark" unique-opened router>
-					<el-menu-item index="/home"><i class="fa fa-home"></i>Home</el-menu-item>
+					<el-menu-item index="/"><i class="fa fa-home"></i>Home</el-menu-item>
 					<template v-for="(item,index) in $router.options.routes" v-if="!item.hidden">
 <el-submenu :index="index+''" v-if="!item.leaf">
 	<template slot="title"><i :class="item.iconCls"></i>{{item.name}}

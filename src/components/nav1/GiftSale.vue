@@ -81,9 +81,17 @@
     </el-row>
     <el-row>
       <ul>
-        <li v-for="item in Level1" v-on:click = "removeItem(item,0)">
-          {{item.text}}:{{item.value}}
-        </li>
+        <el-tag
+          v-for="level in Level1"
+          :closable="true"
+          type="primary"
+          :key="level"
+          :close-transition="false"
+          @close="handleClose(level)"
+          style="margin-left:10px"
+        >
+        {{level.text}}:{{level.value}}
+        </el-tag>
       </ul>
     </el-row>
 	</el-form>
@@ -144,7 +152,7 @@ export default {
     },
     methods: {
         onSubmit() {
-
+          
         },
         warn() {
             this.$notify({
@@ -167,6 +175,9 @@ export default {
                 type: 'success'
             });
         },
+        handleClose(level) {
+          this.Level1.splice(this.Level1.indexOf(level), 1);
+        }
     }
 }
 </script>
